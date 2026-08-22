@@ -97,10 +97,12 @@ The data is intended for portfolio demonstration and reproducible analysis, not 
 
 ## Open the project
 
-1. Download and extract `Supply_Chain_Control_Tower_PBIP.zip`.
+1. [Download the Power BI project archive](Supply_Chain_Control_Tower_Power_BI_Project.rar) and extract it.
 2. Open `SupplyChainControlTower.pbip` in a recent version of Power BI Desktop.
 3. Open **Transform data → Manage Parameters**.
 4. Set `DataFolder` to the included extracted `data` folder.
+
+Preview the completed dashboard: [open the PDF](Supply_Chain_Control_Tower_Dashboard.pdf).
 5. Select **Close & Apply**, then refresh the model.
 
 ## Design and development
