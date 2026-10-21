@@ -145,7 +145,7 @@ table FactPurchaseOrders
 		mode: import
 		source =
 				let
-					Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/KhalidSaadaldinYahia/supply-chain-control-tower/main/project/data/fact_purchase_orders.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/KhalidSaadaldinYahia/supply-chain-control-tower/5798892caa8d48c0da542299c70b89686e4efe5a/project/data/fact_purchase_orders.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 					Typed = Table.TransformColumnTypes(Headers, {{"POID", Int64.Type}, {"DateKey", Int64.Type}, {"PODate", type date}, {"ProductKey", Int64.Type}, {"SupplierKey", Int64.Type}, {"WarehouseKey", Int64.Type}, {"QtyOrdered", Int64.Type}, {"QtyReceived", Int64.Type}, {"POValue", type number}, {"ExpectedReceiptDate", type date}, {"ActualReceiptDate", type date}, {"OnTimeFlag", Int64.Type}, {"InFullFlag", Int64.Type}, {"OTIFFlag", Int64.Type}, {"LeadTimeDays", Int64.Type}, {"DelayDays", Int64.Type}, {"DefectQty", Int64.Type}, {"LatePOValue", type number}})
 				in

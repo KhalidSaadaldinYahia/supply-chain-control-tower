@@ -47,7 +47,7 @@ table DimSupplier
 		mode: import
 		source =
 				let
-					Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/KhalidSaadaldinYahia/supply-chain-control-tower/main/project/data/dim_supplier.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/KhalidSaadaldinYahia/supply-chain-control-tower/5798892caa8d48c0da542299c70b89686e4efe5a/project/data/dim_supplier.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 					Typed = Table.TransformColumnTypes(Headers, {{"SupplierKey", Int64.Type}, {"Supplier", type text}, {"Country", type text}, {"ReliabilityScore", type number}, {"QualityScore", type number}, {"TargetLeadTimeDays", Int64.Type}})
 				in

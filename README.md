@@ -116,6 +116,12 @@ Data Analyst · Power BI · Python · SQL · Excel
 - [Preview the dashboard PDF](Supply_Chain_Control_Tower_Dashboard.pdf). A PDF is a static export; the `.pbip` project contains the interactive report.
 - [Browse the Power BI project](project/) or [download this repository as a ZIP](https://github.com/KhalidSaadaldinYahia/supply-chain-control-tower/archive/refs/heads/main.zip). Keep the `project` folder intact after extracting.
 - Open [`SupplyChainControlTower.pbip`](project/SupplyChainControlTower.pbip) from the extracted `project` folder in a recent Power BI Desktop. The `.pbip` file references its sibling `.Report` and `.SemanticModel` folders; it cannot open by itself after downloading only that file.
-- On refresh, choose **Anonymous** access if Power BI requests credentials for `raw.githubusercontent.com`. The project reads the included CSV snapshot from this repository's public `main` branch. For offline refresh, replace each table query's `Web.Contents(...)` CSV source with `File.Contents(...)` pointing to its included local `project/data` CSV.
+- On refresh, choose **Anonymous** access if Power BI requests credentials for `raw.githubusercontent.com`. The project reads the included CSV snapshot from this repository at fixed commit `5798892caa8d`. For offline refresh, replace each table query's `Web.Contents(...)` CSV source with `File.Contents(...)` pointing to its included local `project/data` CSV.
 
 The CSV data snapshots are included under [`project/data`](project/data/). A `.pbix` was not generated because the PBIP source cannot be converted faithfully without opening and saving it in Power BI Desktop.
+
+### Reproducible data snapshot
+
+The semantic model reads CSV files from immutable commit `5798892caa8d48c0da542299c70b89686e4efe5a`. The same files are included in `project/data/` for inspection. Refreshing this project will not silently switch to a later `main` branch snapshot. To analyze newer data, update the CSV and source URL together and revalidate the measures and preview.
+
+The data are synthetic portfolio examples. The repository includes the complete prepared tables and model; it does not include the original generator. Reproduction of the exact synthetic records should use the committed CSV snapshot.
