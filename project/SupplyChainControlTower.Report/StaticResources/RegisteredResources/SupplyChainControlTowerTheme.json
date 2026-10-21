@@ -1,0 +1,19 @@
+{
+  "name": "Supply Chain Control Tower — Command Dark",
+  "dataColors": [
+    "#22D3EE",
+    "#14B8A6",
+    "#60A5FA",
+    "#A78BFA",
+    "#F59E0B",
+    "#F43F5E",
+    "#34D399",
+    "#F472B6"
+  ],
+  "background": "#07101D",
+  "foreground": "#F8FAFC",
+  "tableAccent": "#22D3EE",
+  "good": "#34D399",
+  "neutral": "#F59E0B",
+  "bad": "#F43F5E"
+}

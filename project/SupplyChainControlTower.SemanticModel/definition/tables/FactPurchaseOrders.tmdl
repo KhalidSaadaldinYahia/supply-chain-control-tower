@@ -1,0 +1,152 @@
+table FactPurchaseOrders
+	lineageTag: cad4640a-532b-46a6-9cd3-deea0659e9dc
+
+	column POID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 228811b5-eb90-41f8-92ca-9724659eafe7
+		summarizeBy: none
+		sourceColumn: POID
+
+	column DateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 08bac924-cb4f-4746-bcd5-45c9232b96d6
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column PODate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 62e4f678-1183-420f-a88b-4f2f5c12d89b
+		summarizeBy: none
+		sourceColumn: PODate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fb580cf1-8cc3-49b6-a5d7-9daa854a0a95
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	column SupplierKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7d941e59-926b-46a1-a162-d3965259ff41
+		summarizeBy: none
+		sourceColumn: SupplierKey
+
+	column WarehouseKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 06265bae-aacf-4791-ad6d-1b51dd9305e2
+		summarizeBy: none
+		sourceColumn: WarehouseKey
+
+	column QtyOrdered
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5f2f245f-760c-4627-95f3-3dd911b58c44
+		summarizeBy: none
+		sourceColumn: QtyOrdered
+
+	column QtyReceived
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2a6388cd-a56b-4a49-aebf-e449a2c3d94a
+		summarizeBy: none
+		sourceColumn: QtyReceived
+
+	column POValue
+		dataType: double
+		formatString: $#,0
+		lineageTag: 86811e46-d137-4ccd-b659-bddc0ede0533
+		summarizeBy: none
+		sourceColumn: POValue
+
+	column ExpectedReceiptDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: f24cdcf3-3747-4386-87ee-27e7851b73ed
+		summarizeBy: none
+		sourceColumn: ExpectedReceiptDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ActualReceiptDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 051d085a-e097-4462-b26d-3fed2919855a
+		summarizeBy: none
+		sourceColumn: ActualReceiptDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OnTimeFlag
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a105b7ab-1866-444c-a298-acbb6b32c289
+		summarizeBy: none
+		sourceColumn: OnTimeFlag
+
+	column InFullFlag
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0bfcd809-3e5e-4d14-a661-5921f7b9fec6
+		summarizeBy: none
+		sourceColumn: InFullFlag
+
+	column OTIFFlag
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c6edcc3c-24e1-4739-a024-8b9828ce1c03
+		summarizeBy: none
+		sourceColumn: OTIFFlag
+
+	column LeadTimeDays
+		dataType: int64
+		formatString: 0
+		lineageTag: bdd25222-265f-4bdc-9326-d110ea7cf8e6
+		summarizeBy: none
+		sourceColumn: LeadTimeDays
+
+	column DelayDays
+		dataType: int64
+		formatString: 0
+		lineageTag: 18c8dc28-e1d9-4873-b4b2-a722634a9a38
+		summarizeBy: none
+		sourceColumn: DelayDays
+
+	column DefectQty
+		dataType: int64
+		formatString: #,0
+		lineageTag: feaa5ba3-2585-4f53-b866-159022c018cb
+		summarizeBy: none
+		sourceColumn: DefectQty
+
+	column LatePOValue
+		dataType: double
+		formatString: $#,0
+		lineageTag: 46312391-17bc-4db2-84b9-8e96bd5fb906
+		summarizeBy: none
+		sourceColumn: LatePOValue
+
+	partition FactPurchaseOrders = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/KhalidSaadaldinYahia/supply-chain-control-tower/main/project/data/fact_purchase_orders.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"POID", Int64.Type}, {"DateKey", Int64.Type}, {"PODate", type date}, {"ProductKey", Int64.Type}, {"SupplierKey", Int64.Type}, {"WarehouseKey", Int64.Type}, {"QtyOrdered", Int64.Type}, {"QtyReceived", Int64.Type}, {"POValue", type number}, {"ExpectedReceiptDate", type date}, {"ActualReceiptDate", type date}, {"OnTimeFlag", Int64.Type}, {"InFullFlag", Int64.Type}, {"OTIFFlag", Int64.Type}, {"LeadTimeDays", Int64.Type}, {"DelayDays", Int64.Type}, {"DefectQty", Int64.Type}, {"LatePOValue", type number}})
+				in
+					Typed

@@ -1,0 +1,145 @@
+table FactSalesOrders
+	lineageTag: cfa404dd-c540-4894-846d-eebb442e8e58
+
+	column OrderID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cf3e9338-274b-46bb-9548-823325f7717e
+		summarizeBy: none
+		sourceColumn: OrderID
+
+	column DateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f0c8b6f5-a2dd-446c-a0d2-db71ab965c57
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column OrderDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 8962d8ae-c26b-474a-bb48-a03cedc70a80
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f95593a4-8aaf-4567-8aa1-987d01beb1d2
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	column WarehouseKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4c76c833-727f-482c-bf80-ded460d67dba
+		summarizeBy: none
+		sourceColumn: WarehouseKey
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9c5bac47-24e9-45b6-b588-7e7e0fd54c46
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	column QtyOrdered
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4564211a-39d6-4896-9352-00fd3529d1f0
+		summarizeBy: none
+		sourceColumn: QtyOrdered
+
+	column QtyDelivered
+		dataType: int64
+		formatString: #,0
+		lineageTag: afb5305e-a3f3-475f-a191-9ef87a6038c5
+		summarizeBy: none
+		sourceColumn: QtyDelivered
+
+	column Revenue
+		dataType: double
+		formatString: $#,0
+		lineageTag: 40b08d89-691f-47af-b9ee-9857c76c2bc3
+		summarizeBy: none
+		sourceColumn: Revenue
+
+	column COGS
+		dataType: double
+		formatString: $#,0
+		lineageTag: 08c86056-e1c9-458f-b165-cb2d74e8b083
+		summarizeBy: none
+		sourceColumn: COGS
+
+	column RequestedDeliveryDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 53f97c76-abbb-4598-a55e-f7e8b71eedb0
+		summarizeBy: none
+		sourceColumn: RequestedDeliveryDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ActualDeliveryDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 40ec9bd2-25b9-4096-8f7c-e7cdea9e8ec9
+		summarizeBy: none
+		sourceColumn: ActualDeliveryDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OnTimeFlag
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bf1ef231-6838-47d1-a93e-61fbea1ca180
+		summarizeBy: none
+		sourceColumn: OnTimeFlag
+
+	column InFullFlag
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 024bc1a5-e8dc-4dba-9f15-c3d00fb948d0
+		summarizeBy: none
+		sourceColumn: InFullFlag
+
+	column OTIFFlag
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d839afc4-2d50-4940-b973-968fbafe630f
+		summarizeBy: none
+		sourceColumn: OTIFFlag
+
+	column DelayDays
+		dataType: int64
+		formatString: 0
+		lineageTag: c37f24fe-5168-476d-b5ef-f8bcdb032e3e
+		summarizeBy: none
+		sourceColumn: DelayDays
+
+	column RevenueAtRisk
+		dataType: double
+		formatString: $#,0
+		lineageTag: fb40e10b-4643-429d-927a-9321d755d241
+		summarizeBy: none
+		sourceColumn: RevenueAtRisk
+
+	partition FactSalesOrders = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/KhalidSaadaldinYahia/supply-chain-control-tower/main/project/data/fact_sales_orders.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"OrderID", Int64.Type}, {"DateKey", Int64.Type}, {"OrderDate", type date}, {"ProductKey", Int64.Type}, {"WarehouseKey", Int64.Type}, {"CustomerKey", Int64.Type}, {"QtyOrdered", Int64.Type}, {"QtyDelivered", Int64.Type}, {"Revenue", type number}, {"COGS", type number}, {"RequestedDeliveryDate", type date}, {"ActualDeliveryDate", type date}, {"OnTimeFlag", Int64.Type}, {"InFullFlag", Int64.Type}, {"OTIFFlag", Int64.Type}, {"DelayDays", Int64.Type}, {"RevenueAtRisk", type number}})
+				in
+					Typed

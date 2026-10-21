@@ -56,7 +56,7 @@ Metric definitions, semantic-model architecture, engineering decisions, refresh 
 - Dedicated `_Measures` table with grouped business measures
 - Explicit Date dimension with auto date/time disabled
 - Separate KPI display measures and detail-level financial formatting
-- Reusable `DataFolder` Power Query parameter
+- Public GitHub CSV source with local CSV snapshot included
 - Custom report theme and registered background images
 
 ## Data model
@@ -95,15 +95,6 @@ It contains:
 
 The data is intended for portfolio demonstration and reproducible analysis, not operational decision-making.
 
-## Open the project
-
-1. [Download the Power BI project archive](Supply_Chain_Control_Tower_Power_BI_Project.rar) and extract it.
-2. Open `SupplyChainControlTower.pbip` in a recent version of Power BI Desktop.
-3. Open **Transform data → Manage Parameters**.
-4. Set `DataFolder` to the included extracted `data` folder.
-5. Select **Close & Apply**, then refresh the model.
-
-Preview the completed dashboard: [open the PDF](Supply_Chain_Control_Tower_Dashboard.pdf).
 
 ## Design and development
 
@@ -119,3 +110,12 @@ The report uses an executive command-center visual system with dedicated page co
 
 **Khalid SaadAldin Yahia**  
 Data Analyst · Power BI · Python · SQL · Excel
+
+## Open and inspect the report
+
+- [Preview the dashboard PDF](Supply_Chain_Control_Tower_Dashboard.pdf). A PDF is a static export; the `.pbip` project contains the interactive report.
+- [Browse the Power BI project](project/) or [download this repository as a ZIP](https://github.com/KhalidSaadaldinYahia/supply-chain-control-tower/archive/refs/heads/main.zip). Keep the `project` folder intact after extracting.
+- Open [`SupplyChainControlTower.pbip`](project/SupplyChainControlTower.pbip) from the extracted `project` folder in a recent Power BI Desktop. The `.pbip` file references its sibling `.Report` and `.SemanticModel` folders; it cannot open by itself after downloading only that file.
+- On refresh, choose **Anonymous** access if Power BI requests credentials for `raw.githubusercontent.com`. The project reads the included CSV snapshot from this repository's public `main` branch. For offline refresh, replace each table query's `Web.Contents(...)` CSV source with `File.Contents(...)` pointing to its included local `project/data` CSV.
+
+The CSV data snapshots are included under [`project/data`](project/data/). A `.pbix` was not generated because the PBIP source cannot be converted faithfully without opening and saving it in Power BI Desktop.

@@ -1,0 +1,233 @@
+/// Centralized business measures. Keep report visuals thin and reusable.
+table _Measures
+	lineageTag: 83237b72-74ae-4197-80e5-3626dba8298f
+
+	measure Revenue = SUM(FactSalesOrders[Revenue])
+		formatString: $#,0
+		displayFolder: Fulfillment
+		lineageTag: 38ae0294-b450-4faa-b461-5f8d853c7cf1
+
+	measure COGS = SUM(FactSalesOrders[COGS])
+		formatString: $#,0
+		displayFolder: Fulfillment
+		lineageTag: 1b7a1ec8-bc85-4c7d-a102-ad20dc3a6f5e
+
+	measure 'Gross Margin' = [Revenue] - [COGS]
+		formatString: $#,0
+		displayFolder: Fulfillment
+		lineageTag: ba02aa21-f014-46a3-a3c0-cdc0aa22ea33
+
+	measure 'Gross Margin %' = DIVIDE([Gross Margin], [Revenue])
+		formatString: 0.0%
+		displayFolder: Fulfillment
+		lineageTag: f16d0103-b65f-49be-b939-e996f8d303ac
+
+	measure Orders = DISTINCTCOUNT(FactSalesOrders[OrderID])
+		formatString: #,0
+		displayFolder: Fulfillment
+		lineageTag: 2609b532-77e7-4959-ac13-b014a7b9735a
+
+	measure 'Units Ordered' = SUM(FactSalesOrders[QtyOrdered])
+		formatString: #,0
+		displayFolder: Fulfillment
+		lineageTag: 5dcaee94-5f44-42f5-9ad0-42da6de6668a
+
+	measure 'Units Delivered' = SUM(FactSalesOrders[QtyDelivered])
+		formatString: #,0
+		displayFolder: Fulfillment
+		lineageTag: 1c2eb2e4-0e0f-4657-9002-5fa2ad3402ae
+
+	measure 'OTIF %' = DIVIDE(SUM(FactSalesOrders[OTIFFlag]), COUNTROWS(FactSalesOrders))
+		formatString: 0.0%
+		displayFolder: Fulfillment
+		lineageTag: 69d760d2-5b19-4e85-8a0e-dac97f778e80
+
+	measure 'On-Time %' = DIVIDE(SUM(FactSalesOrders[OnTimeFlag]), COUNTROWS(FactSalesOrders))
+		formatString: 0.0%
+		displayFolder: Fulfillment
+		lineageTag: 9d0928ca-0651-4959-bfd9-f95dee308faa
+
+	measure 'In-Full %' = DIVIDE(SUM(FactSalesOrders[InFullFlag]), COUNTROWS(FactSalesOrders))
+		formatString: 0.0%
+		displayFolder: Fulfillment
+		lineageTag: 77b1d0a6-eb44-421d-9861-f2c5ade9915e
+
+	measure 'Revenue at Risk' = SUM(FactSalesOrders[RevenueAtRisk])
+		formatString: $#,0
+		displayFolder: Exceptions
+		lineageTag: bf4caab5-9530-4328-a15a-5c0b711c6726
+
+	measure 'Avg Delivery Delay' = AVERAGE(FactSalesOrders[DelayDays])
+		formatString: 0.0
+		displayFolder: Fulfillment
+		lineageTag: 5ac8f143-92e2-41d2-9cf9-2bbec4e0773b
+
+	measure 'Latest Snapshot Date' = MAX(FactInventoryMonthly[SnapshotDate])
+		formatString: yyyy-mm-dd
+		displayFolder: Inventory
+		lineageTag: 598dd490-eab9-4481-9367-401df1834e49
+
+	measure 'Inventory Value' =
+			VAR d = [Latest Snapshot Date]
+			RETURN CALCULATE(SUM(FactInventoryMonthly[InventoryValue]), FactInventoryMonthly[SnapshotDate] = d)
+		formatString: $#,0
+		displayFolder: Inventory
+		lineageTag: faa4c2a0-a5cd-4815-9002-d61214d9269f
+
+	measure 'Excess Inventory Value' =
+			VAR d = [Latest Snapshot Date]
+			RETURN CALCULATE(SUM(FactInventoryMonthly[ExcessInventoryValue]), FactInventoryMonthly[SnapshotDate] = d)
+		formatString: $#,0
+		displayFolder: Inventory
+		lineageTag: baae5874-092a-44a5-8a41-75717708ec95
+
+	measure 'Stockout Risk Locations' =
+			VAR d = [Latest Snapshot Date]
+			RETURN CALCULATE(SUM(FactInventoryMonthly[StockoutRiskFlag]), FactInventoryMonthly[SnapshotDate] = d)
+		formatString: #,0
+		displayFolder: Inventory
+		lineageTag: 241c8ce6-3e1f-4fc8-a186-e2272d6e90ba
+
+	measure 'Stockout Risk SKUs' =
+			VAR d = [Latest Snapshot Date]
+			RETURN CALCULATE(DISTINCTCOUNT(FactInventoryMonthly[ProductKey]), FactInventoryMonthly[SnapshotDate] = d, FactInventoryMonthly[StockoutRiskFlag] = 1)
+		formatString: #,0
+		displayFolder: Inventory
+		lineageTag: b7f1607e-4d30-4bfb-a584-385e2085c07e
+
+	measure 'Avg Days of Supply' =
+			VAR d = [Latest Snapshot Date]
+			RETURN CALCULATE(AVERAGE(FactInventoryMonthly[DaysOfSupply]), FactInventoryMonthly[SnapshotDate] = d)
+		formatString: 0.0
+		displayFolder: Inventory
+		lineageTag: 42e0cb61-d73f-4608-924a-12b432f13392
+
+	measure 'Demand 28D' =
+			VAR d = [Latest Snapshot Date]
+			RETURN CALCULATE(SUM(FactInventoryMonthly[Demand28D]), FactInventoryMonthly[SnapshotDate] = d)
+		formatString: #,0
+		displayFolder: Inventory
+		lineageTag: d4b20b2a-6e66-453d-9646-a18caee3f1e1
+
+	measure 'Inventory Shortage Value' =
+			VAR d = [Latest Snapshot Date]
+			RETURN CALCULATE(SUMX(FactInventoryMonthly, FactInventoryMonthly[ShortageUnits] * RELATED(DimProduct[UnitCost])), FactInventoryMonthly[SnapshotDate] = d)
+		formatString: $#,0
+		displayFolder: Exceptions
+		lineageTag: 24364d0f-601d-41b5-9e83-be4c031423e9
+
+	measure 'Average Inventory Value' = AVERAGEX(VALUES(FactInventoryMonthly[SnapshotDate]), CALCULATE(SUM(FactInventoryMonthly[InventoryValue])))
+		formatString: $#,0
+		displayFolder: Inventory
+		lineageTag: da7a0238-01cb-4195-9288-8f821813ad2d
+
+	measure 'COGS L12M' = CALCULATE([COGS], DATESINPERIOD(DimDate[Date], MAX(DimDate[Date]), -12, MONTH))
+		formatString: $#,0
+		displayFolder: Inventory
+		lineageTag: a8b8007e-43dc-4363-b840-3d0c847722b3
+
+	measure 'Inventory Turns' = DIVIDE([COGS L12M], [Average Inventory Value])
+		formatString: 0.0x
+		displayFolder: Inventory
+		lineageTag: 75482a4a-4c9a-4a18-b2ab-8dd15c741429
+
+	measure 'PO Value' = SUM(FactPurchaseOrders[POValue])
+		formatString: $#,0
+		displayFolder: Suppliers
+		lineageTag: c914a021-0114-45c9-8cd1-2fe90c95da98
+
+	measure POs = DISTINCTCOUNT(FactPurchaseOrders[POID])
+		formatString: #,0
+		displayFolder: Suppliers
+		lineageTag: 8e802a25-05c6-40af-9d1d-aa5305568b5c
+
+	measure 'Supplier OTIF %' = DIVIDE(SUM(FactPurchaseOrders[OTIFFlag]), COUNTROWS(FactPurchaseOrders))
+		formatString: 0.0%
+		displayFolder: Suppliers
+		lineageTag: 2fcc716d-3f66-4afd-bd24-39bf93414fe1
+
+	measure 'Purchase On-Time %' = DIVIDE(SUM(FactPurchaseOrders[OnTimeFlag]), COUNTROWS(FactPurchaseOrders))
+		formatString: 0.0%
+		displayFolder: Suppliers
+		lineageTag: 660a2223-331a-4ecf-afb7-cf872325147a
+
+	measure 'Purchase In-Full %' = DIVIDE(SUM(FactPurchaseOrders[InFullFlag]), COUNTROWS(FactPurchaseOrders))
+		formatString: 0.0%
+		displayFolder: Suppliers
+		lineageTag: 9fe3115c-309e-474d-90bf-9d765ff98579
+
+	measure 'Late PO Value' = SUM(FactPurchaseOrders[LatePOValue])
+		formatString: $#,0
+		displayFolder: Exceptions
+		lineageTag: 1c076dc7-093a-47f9-a7bf-3a19495725ba
+
+	measure 'Avg Lead Time' = AVERAGE(FactPurchaseOrders[LeadTimeDays])
+		formatString: 0.0
+		displayFolder: Suppliers
+		lineageTag: 4f1ee62b-8d7d-4ce3-8597-42e97e2943a9
+
+	measure 'Avg PO Delay' = AVERAGE(FactPurchaseOrders[DelayDays])
+		formatString: 0.0
+		displayFolder: Suppliers
+		lineageTag: a263a63f-c0ea-46c0-9c9a-2f30094aa5a0
+
+	measure 'Defect Rate' = DIVIDE(SUM(FactPurchaseOrders[DefectQty]), SUM(FactPurchaseOrders[QtyReceived]))
+		formatString: 0.00%
+		displayFolder: Suppliers
+		lineageTag: 38f0003d-0165-464a-a498-8ef569011e62
+
+	measure 'Supplier Risk Index' =
+			VAR serviceRisk = 1 - [Supplier OTIF %]
+			VAR qualityRisk = MIN(DIVIDE([Defect Rate], 0.03), 1)
+			VAR delayRisk = MIN(DIVIDE(MAX([Avg PO Delay], 0), 12), 1)
+			RETURN serviceRisk * 0.60 + qualityRisk * 0.25 + delayRisk * 0.15
+		formatString: 0.0%
+		displayFolder: Suppliers
+		lineageTag: 0db66230-bce6-4734-8f2b-d47e3e090a4a
+
+	measure 'Working Capital at Risk' = [Excess Inventory Value] + [Late PO Value]
+		formatString: $#,0
+		displayFolder: Exceptions
+		lineageTag: 69949171-9bda-4d57-a3df-21258e678585
+
+	measure 'Total Exception Value' = [Revenue at Risk] + [Inventory Shortage Value] + [Late PO Value]
+		formatString: $#,0
+		displayFolder: Exceptions
+		lineageTag: dc0500ac-1799-43d3-970e-a16c5191cb6d
+
+	measure 'Revenue KPI' = DIVIDE([Revenue], 1000000)
+		formatString: $#,0.0M
+		displayFolder: KPIs
+		lineageTag: 18d0a3d7-be1b-4a57-9ed7-c5cefa206dde
+
+	measure 'Revenue at Risk KPI' = DIVIDE([Revenue at Risk], 1000000)
+		formatString: $#,0.0M
+		displayFolder: KPIs
+		lineageTag: 030d0201-affb-430c-ae62-ad346b33d7fd
+
+	measure 'Inventory Value KPI' = DIVIDE([Inventory Value], 1000000)
+		formatString: $#,0.0M
+		displayFolder: KPIs
+		lineageTag: 90872a80-6f2b-4701-864a-42c5e2de741c
+
+	measure 'Excess Inventory Value KPI' = DIVIDE([Excess Inventory Value], 1000)
+		formatString: $#,0.0K
+		displayFolder: KPIs
+		lineageTag: 931a29d7-a41a-4666-839b-e7001f68c777
+
+	measure 'Late PO Value KPI' = DIVIDE([Late PO Value], 1000000)
+		formatString: $#,0.0M
+		displayFolder: KPIs
+		lineageTag: 95857b32-75f1-4d2b-91d7-f141f60e2db0
+
+	column Value
+		dataType: int64
+		isHidden
+		lineageTag: 2fdd49e5-2db3-4f7d-9a33-c882c97898ae
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+	partition _Measures = calculated
+		mode: import
+		source = { 0 }

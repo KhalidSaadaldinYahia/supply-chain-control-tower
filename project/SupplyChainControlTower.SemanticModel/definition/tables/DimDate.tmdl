@@ -1,0 +1,78 @@
+table DimDate
+	lineageTag: 9531c637-896e-4b61-9398-92ab1bdc6d61
+
+	column DateKey
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 4b23723e-24e9-434b-8605-bb267d3bf410
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: d532939f-9018-4049-8eae-fcfb352940dd
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d18ca2f-ed07-47ae-bc5a-c5ef412710bc
+		summarizeBy: none
+		sourceColumn: Year
+
+	column Quarter
+		dataType: string
+		lineageTag: f3bce75c-f446-4153-a884-d395567016c5
+		summarizeBy: none
+		sourceColumn: Quarter
+
+	column MonthNo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e8073f2a-5c4b-4cc2-8132-4ec4db8cb0ce
+		summarizeBy: none
+		sourceColumn: MonthNo
+
+	column Month
+		dataType: string
+		lineageTag: 70241804-497c-4e74-a35d-4a8efdfc5124
+		summarizeBy: none
+		sourceColumn: Month
+
+	column MonthYear
+		dataType: string
+		lineageTag: a0cff786-63c7-497e-8253-88546f7d113c
+		summarizeBy: none
+		sourceColumn: MonthYear
+
+	column MonthStart
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: e7d95dd0-493b-4c0b-a0e5-8355c06d94e4
+		summarizeBy: none
+		sourceColumn: MonthStart
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Weekday
+		dataType: string
+		lineageTag: 440a6c08-5a7f-4fa8-9b9a-5519d3b0ea19
+		summarizeBy: none
+		sourceColumn: Weekday
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/KhalidSaadaldinYahia/supply-chain-control-tower/main/project/data/dim_date.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"DateKey", Int64.Type}, {"Date", type date}, {"Year", Int64.Type}, {"Quarter", type text}, {"MonthNo", Int64.Type}, {"Month", type text}, {"MonthYear", type text}, {"MonthStart", type date}, {"Weekday", type text}})
+				in
+					Typed

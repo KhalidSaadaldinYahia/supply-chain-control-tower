@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "customTheme": {
+      "name": "SupplyChainControlTowerTheme.json",
+      "reportVersionAtImport": {
+        "visual": "2.12.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "resourcePackages": [
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "CommandCenter_Control.png",
+          "path": "CommandCenter_Control.png",
+          "type": "Image"
+        },
+        {
+          "name": "CommandCenter_Fulfillment.png",
+          "path": "CommandCenter_Fulfillment.png",
+          "type": "Image"
+        },
+        {
+          "name": "CommandCenter_Inventory.png",
+          "path": "CommandCenter_Inventory.png",
+          "type": "Image"
+        },
+        {
+          "name": "CommandCenter_Methodology.png",
+          "path": "CommandCenter_Methodology.png",
+          "type": "Image"
+        },
+        {
+          "name": "CommandCenter_Supplier.png",
+          "path": "CommandCenter_Supplier.png",
+          "type": "Image"
+        },
+        {
+          "name": "SupplyChainControlTowerTheme.json",
+          "path": "SupplyChainControlTowerTheme.json",
+          "type": "CustomTheme"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "useEnhancedTooltips": true
+  }
+}

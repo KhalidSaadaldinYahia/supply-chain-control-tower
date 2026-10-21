@@ -1,0 +1,241 @@
+CustomerKey,Customer,Segment,Industry,Region
+1,Customer 001,Retail,Technology,Northeast
+2,Customer 002,Enterprise,Manufacturing,West
+3,Customer 003,Mid-Market,Facilities,Midwest
+4,Customer 004,Retail,Manufacturing,South
+5,Customer 005,SMB,Public Sector,Midwest
+6,Customer 006,Mid-Market,Technology,Northeast
+7,Customer 007,Retail,Distribution,Northeast
+8,Customer 008,Mid-Market,Healthcare,West
+9,Customer 009,Enterprise,Technology,South
+10,Customer 010,Retail,Distribution,Midwest
+11,Customer 011,Retail,Manufacturing,South
+12,Customer 012,Mid-Market,Technology,Northeast
+13,Customer 013,Enterprise,Manufacturing,South
+14,Customer 014,Retail,Technology,Northeast
+15,Customer 015,SMB,Technology,South
+16,Customer 016,Retail,Manufacturing,Southeast
+17,Customer 017,Enterprise,Distribution,Midwest
+18,Customer 018,Mid-Market,Distribution,West
+19,Customer 019,Retail,Distribution,South
+20,Customer 020,Mid-Market,Healthcare,Midwest
+21,Customer 021,SMB,Facilities,Midwest
+22,Customer 022,Enterprise,Public Sector,South
+23,Customer 023,Mid-Market,Manufacturing,Northeast
+24,Customer 024,Enterprise,Public Sector,West
+25,Customer 025,SMB,Technology,Midwest
+26,Customer 026,SMB,Manufacturing,West
+27,Customer 027,Mid-Market,Distribution,Midwest
+28,Customer 028,Enterprise,Facilities,Southeast
+29,Customer 029,SMB,Technology,Northeast
+30,Customer 030,Retail,Public Sector,Midwest
+31,Customer 031,Mid-Market,Public Sector,Midwest
+32,Customer 032,Mid-Market,Distribution,Midwest
+33,Customer 033,Retail,Public Sector,West
+34,Customer 034,SMB,Manufacturing,Midwest
+35,Customer 035,SMB,Distribution,Midwest
+36,Customer 036,Retail,Facilities,West
+37,Customer 037,Mid-Market,Manufacturing,Northeast
+38,Customer 038,SMB,Distribution,West
+39,Customer 039,Mid-Market,Distribution,South
+40,Customer 040,SMB,Technology,Southeast
+41,Customer 041,SMB,Healthcare,Northeast
+42,Customer 042,Retail,Technology,Northeast
+43,Customer 043,Enterprise,Technology,West
+44,Customer 044,Retail,Manufacturing,South
+45,Customer 045,SMB,Public Sector,Southeast
+46,Customer 046,Mid-Market,Manufacturing,Southeast
+47,Customer 047,SMB,Facilities,South
+48,Customer 048,SMB,Distribution,Northeast
+49,Customer 049,Enterprise,Distribution,Southeast
+50,Customer 050,Enterprise,Facilities,Northeast
+51,Customer 051,Retail,Technology,Midwest
+52,Customer 052,Mid-Market,Public Sector,South
+53,Customer 053,Enterprise,Technology,Northeast
+54,Customer 054,Mid-Market,Manufacturing,South
+55,Customer 055,Enterprise,Distribution,West
+56,Customer 056,SMB,Technology,Southeast
+57,Customer 057,Mid-Market,Public Sector,Southeast
+58,Customer 058,Mid-Market,Facilities,West
+59,Customer 059,SMB,Manufacturing,Southeast
+60,Customer 060,Retail,Technology,West
+61,Customer 061,Enterprise,Manufacturing,Southeast
+62,Customer 062,SMB,Facilities,South
+63,Customer 063,SMB,Distribution,Midwest
+64,Customer 064,Mid-Market,Public Sector,Midwest
+65,Customer 065,SMB,Facilities,Southeast
+66,Customer 066,SMB,Facilities,Southeast
+67,Customer 067,Retail,Distribution,Southeast
+68,Customer 068,SMB,Healthcare,West
+69,Customer 069,SMB,Healthcare,West
+70,Customer 070,Mid-Market,Facilities,Northeast
+71,Customer 071,Enterprise,Facilities,Southeast
+72,Customer 072,Mid-Market,Healthcare,West
+73,Customer 073,Retail,Healthcare,Midwest
+74,Customer 074,SMB,Distribution,Southeast
+75,Customer 075,Retail,Distribution,South
+76,Customer 076,Retail,Manufacturing,South
+77,Customer 077,Mid-Market,Manufacturing,Northeast
+78,Customer 078,SMB,Distribution,West
+79,Customer 079,SMB,Facilities,South
+80,Customer 080,Mid-Market,Distribution,Southeast
+81,Customer 081,Mid-Market,Healthcare,West
+82,Customer 082,Mid-Market,Facilities,South
+83,Customer 083,Enterprise,Public Sector,Southeast
+84,Customer 084,Mid-Market,Distribution,South
+85,Customer 085,SMB,Public Sector,West
+86,Customer 086,SMB,Technology,South
+87,Customer 087,Mid-Market,Healthcare,South
+88,Customer 088,Mid-Market,Manufacturing,South
+89,Customer 089,Enterprise,Healthcare,Southeast
+90,Customer 090,Mid-Market,Manufacturing,Southeast
+91,Customer 091,Enterprise,Technology,West
+92,Customer 092,SMB,Facilities,Southeast
+93,Customer 093,Enterprise,Manufacturing,West
+94,Customer 094,SMB,Public Sector,Southeast
+95,Customer 095,SMB,Technology,South
+96,Customer 096,Mid-Market,Public Sector,Northeast
+97,Customer 097,SMB,Facilities,South
+98,Customer 098,SMB,Manufacturing,West
+99,Customer 099,Mid-Market,Facilities,Southeast
+100,Customer 100,SMB,Healthcare,Midwest
+101,Customer 101,Enterprise,Public Sector,South
+102,Customer 102,Enterprise,Technology,Northeast
+103,Customer 103,SMB,Healthcare,West
+104,Customer 104,Mid-Market,Public Sector,Midwest
+105,Customer 105,Mid-Market,Manufacturing,Northeast
+106,Customer 106,Enterprise,Distribution,Midwest
+107,Customer 107,Retail,Distribution,West
+108,Customer 108,Retail,Manufacturing,Southeast
+109,Customer 109,Enterprise,Technology,South
+110,Customer 110,Enterprise,Healthcare,West
+111,Customer 111,Retail,Public Sector,West
+112,Customer 112,Mid-Market,Technology,South
+113,Customer 113,Retail,Healthcare,West
+114,Customer 114,Mid-Market,Distribution,Northeast
+115,Customer 115,Enterprise,Manufacturing,South
+116,Customer 116,Mid-Market,Technology,Southeast
+117,Customer 117,SMB,Technology,South
+118,Customer 118,SMB,Public Sector,Southeast
+119,Customer 119,Mid-Market,Manufacturing,Northeast
+120,Customer 120,Mid-Market,Facilities,Southeast
+121,Customer 121,Enterprise,Facilities,Northeast
+122,Customer 122,Enterprise,Facilities,South
+123,Customer 123,SMB,Distribution,Northeast
+124,Customer 124,Mid-Market,Distribution,Northeast
+125,Customer 125,Mid-Market,Manufacturing,Southeast
+126,Customer 126,SMB,Distribution,South
+127,Customer 127,SMB,Facilities,West
+128,Customer 128,SMB,Facilities,Midwest
+129,Customer 129,Enterprise,Facilities,Northeast
+130,Customer 130,Retail,Public Sector,South
+131,Customer 131,Retail,Technology,Midwest
+132,Customer 132,Retail,Technology,West
+133,Customer 133,Enterprise,Facilities,South
+134,Customer 134,SMB,Healthcare,Southeast
+135,Customer 135,Mid-Market,Healthcare,West
+136,Customer 136,Mid-Market,Public Sector,West
+137,Customer 137,Mid-Market,Manufacturing,Southeast
+138,Customer 138,SMB,Technology,South
+139,Customer 139,SMB,Distribution,Northeast
+140,Customer 140,SMB,Distribution,West
+141,Customer 141,SMB,Facilities,Midwest
+142,Customer 142,Mid-Market,Public Sector,Northeast
+143,Customer 143,Retail,Public Sector,Northeast
+144,Customer 144,Enterprise,Public Sector,Northeast
+145,Customer 145,Enterprise,Technology,Northeast
+146,Customer 146,SMB,Technology,Southeast
+147,Customer 147,SMB,Distribution,South
+148,Customer 148,Mid-Market,Distribution,West
+149,Customer 149,Enterprise,Technology,Midwest
+150,Customer 150,Mid-Market,Technology,Midwest
+151,Customer 151,Mid-Market,Manufacturing,Northeast
+152,Customer 152,Enterprise,Healthcare,South
+153,Customer 153,Mid-Market,Public Sector,Midwest
+154,Customer 154,Mid-Market,Public Sector,West
+155,Customer 155,Enterprise,Healthcare,Midwest
+156,Customer 156,Mid-Market,Facilities,Midwest
+157,Customer 157,Enterprise,Public Sector,Southeast
+158,Customer 158,Enterprise,Public Sector,Midwest
+159,Customer 159,Enterprise,Facilities,West
+160,Customer 160,SMB,Public Sector,Northeast
+161,Customer 161,Retail,Distribution,South
+162,Customer 162,SMB,Public Sector,Southeast
+163,Customer 163,Mid-Market,Technology,South
+164,Customer 164,Retail,Technology,West
+165,Customer 165,Retail,Manufacturing,West
+166,Customer 166,SMB,Technology,Midwest
+167,Customer 167,SMB,Technology,Midwest
+168,Customer 168,SMB,Healthcare,West
+169,Customer 169,Mid-Market,Facilities,Northeast
+170,Customer 170,Retail,Distribution,South
+171,Customer 171,SMB,Facilities,Southeast
+172,Customer 172,Retail,Manufacturing,South
+173,Customer 173,Enterprise,Public Sector,Northeast
+174,Customer 174,SMB,Public Sector,South
+175,Customer 175,Retail,Manufacturing,Northeast
+176,Customer 176,Mid-Market,Healthcare,Southeast
+177,Customer 177,Enterprise,Distribution,Midwest
+178,Customer 178,Mid-Market,Manufacturing,Northeast
+179,Customer 179,Retail,Technology,Northeast
+180,Customer 180,Retail,Technology,South
+181,Customer 181,Enterprise,Manufacturing,Southeast
+182,Customer 182,Enterprise,Distribution,Northeast
+183,Customer 183,Mid-Market,Public Sector,West
+184,Customer 184,SMB,Healthcare,Midwest
+185,Customer 185,Mid-Market,Manufacturing,West
+186,Customer 186,Enterprise,Distribution,Southeast
+187,Customer 187,Mid-Market,Distribution,Northeast
+188,Customer 188,Mid-Market,Healthcare,Southeast
+189,Customer 189,Mid-Market,Healthcare,Midwest
+190,Customer 190,Retail,Manufacturing,Southeast
+191,Customer 191,SMB,Distribution,Northeast
+192,Customer 192,Enterprise,Technology,Southeast
+193,Customer 193,SMB,Public Sector,West
+194,Customer 194,SMB,Technology,West
+195,Customer 195,Mid-Market,Public Sector,South
+196,Customer 196,SMB,Facilities,West
+197,Customer 197,Mid-Market,Facilities,West
+198,Customer 198,SMB,Public Sector,Midwest
+199,Customer 199,Retail,Healthcare,Midwest
+200,Customer 200,Mid-Market,Technology,Northeast
+201,Customer 201,SMB,Distribution,West
+202,Customer 202,SMB,Facilities,South
+203,Customer 203,Enterprise,Healthcare,Southeast
+204,Customer 204,SMB,Public Sector,Northeast
+205,Customer 205,Enterprise,Manufacturing,South
+206,Customer 206,Mid-Market,Manufacturing,Midwest
+207,Customer 207,SMB,Facilities,Midwest
+208,Customer 208,SMB,Manufacturing,Midwest
+209,Customer 209,SMB,Facilities,Southeast
+210,Customer 210,SMB,Healthcare,Midwest
+211,Customer 211,SMB,Healthcare,Southeast
+212,Customer 212,Mid-Market,Facilities,South
+213,Customer 213,Mid-Market,Manufacturing,South
+214,Customer 214,Retail,Healthcare,Northeast
+215,Customer 215,Mid-Market,Technology,Midwest
+216,Customer 216,Retail,Distribution,Northeast
+217,Customer 217,Mid-Market,Manufacturing,South
+218,Customer 218,Retail,Technology,Midwest
+219,Customer 219,Retail,Public Sector,Midwest
+220,Customer 220,SMB,Facilities,West
+221,Customer 221,SMB,Public Sector,West
+222,Customer 222,SMB,Manufacturing,Northeast
+223,Customer 223,Retail,Facilities,Midwest
+224,Customer 224,SMB,Public Sector,South
+225,Customer 225,Enterprise,Technology,Midwest
+226,Customer 226,Enterprise,Facilities,Midwest
+227,Customer 227,SMB,Technology,Northeast
+228,Customer 228,Retail,Healthcare,Midwest
+229,Customer 229,Mid-Market,Facilities,West
+230,Customer 230,Mid-Market,Public Sector,Midwest
+231,Customer 231,Enterprise,Facilities,Northeast
+232,Customer 232,Mid-Market,Healthcare,South
+233,Customer 233,Mid-Market,Manufacturing,West
+234,Customer 234,Mid-Market,Facilities,Northeast
+235,Customer 235,SMB,Distribution,Midwest
+236,Customer 236,Retail,Manufacturing,South
+237,Customer 237,SMB,Public Sector,Midwest
+238,Customer 238,Mid-Market,Facilities,Northeast
+239,Customer 239,Enterprise,Manufacturing,Northeast
+240,Customer 240,Mid-Market,Distribution,Midwest

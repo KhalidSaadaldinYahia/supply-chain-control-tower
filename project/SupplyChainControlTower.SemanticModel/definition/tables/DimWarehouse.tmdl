@@ -1,0 +1,39 @@
+table DimWarehouse
+	lineageTag: 28d93e2f-98f8-4c36-b1b8-f9c31815165f
+
+	column WarehouseKey
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 398a84cd-25aa-4357-aece-9444b376dd90
+		summarizeBy: none
+		sourceColumn: WarehouseKey
+
+	column Warehouse
+		dataType: string
+		lineageTag: bb18edc0-e464-48ad-ad76-4ba2a616de2f
+		summarizeBy: none
+		sourceColumn: Warehouse
+
+	column Region
+		dataType: string
+		lineageTag: 9bc3ad58-e3de-4470-a758-999418e27f81
+		summarizeBy: none
+		sourceColumn: Region
+
+	column State
+		dataType: string
+		lineageTag: 28686c47-bb12-4d21-979f-bad9a1b96c32
+		summarizeBy: none
+		sourceColumn: State
+
+	partition DimWarehouse = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/KhalidSaadaldinYahia/supply-chain-control-tower/main/project/data/dim_warehouse.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Headers, {{"WarehouseKey", Int64.Type}, {"Warehouse", type text}, {"Region", type text}, {"State", type text}})
+				in
+					Typed
