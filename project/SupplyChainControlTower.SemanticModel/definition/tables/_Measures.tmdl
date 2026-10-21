@@ -126,7 +126,11 @@ table _Measures
 		displayFolder: Inventory
 		lineageTag: a8b8007e-43dc-4363-b840-3d0c847722b3
 
-	measure 'Inventory Turns' = DIVIDE([COGS L12M], [Average Inventory Value])
+	/// Align the inventory denominator with the same trailing 12-month window as COGS
+	measure 'Inventory Turns' =
+			VAR EndDate = MAX(DimDate[Date])
+			VAR InventoryL12M = CALCULATE([Average Inventory Value], DATESINPERIOD(DimDate[Date], EndDate, -12, MONTH))
+			RETURN DIVIDE([COGS L12M], InventoryL12M)
 		formatString: 0.0x
 		displayFolder: Inventory
 		lineageTag: 75482a4a-4c9a-4a18-b2ab-8dd15c741429
