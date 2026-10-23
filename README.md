@@ -1,5 +1,9 @@
 # Supply Chain Control Tower
 
+## Download the complete project
+
+**To open this project:** [download the complete repository ZIP](https://github.com/KhalidSaadaldinYahia/supply-chain-control-tower/archive/refs/heads/main.zip), extract it, and open `project/SupplyChainControlTower.pbip` in Power BI Desktop. Keep the `.Report`, `.SemanticModel`, and `data` folders beside the `.pbip` file. **Downloading the `.pbip` file alone will not produce a working report.** The included CSVs are the inspectable data snapshot; the model refreshes from a fixed online copy of those CSVs by default. The PDF is a static preview.
+
 A Power BI operational intelligence project for monitoring fulfillment, inventory, supplier performance, and working-capital exposure across a synthetic multi-warehouse supply chain.
 
 The report is designed as an exception-led control tower: executive KPIs surface service and financial exposure first, then dedicated analytical pages help isolate inventory, supplier, warehouse, and customer-level drivers.
