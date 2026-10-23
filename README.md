@@ -1,14 +1,8 @@
 # Supply Chain Control Tower
 
-## Download the complete project
+## Open the interactive dashboard
 
-**To open this project:** [download the complete repository ZIP](https://github.com/KhalidSaadaldinYahia/supply-chain-control-tower/archive/refs/heads/main.zip), extract it, and open `project/SupplyChainControlTower.pbip` in Power BI Desktop. Keep the `.Report`, `.SemanticModel`, and `data` folders beside the `.pbip` file. **Downloading the `.pbip` file alone will not produce a working report.** The included CSVs are the inspectable data snapshot; the model refreshes from a fixed online copy of those CSVs by default. The PDF is a static preview.
-
-A Power BI operational intelligence project for monitoring fulfillment, inventory, supplier performance, and working-capital exposure across a synthetic multi-warehouse supply chain.
-
-The report is designed as an exception-led control tower: executive KPIs surface service and financial exposure first, then dedicated analytical pages help isolate inventory, supplier, warehouse, and customer-level drivers.
-
-![Supply Chain Control Tower design system](dashboard-design-preview.png)
+**Recommended:** [download SupplyChainControlTower.pbix](SupplyChainControlTower.pbix) and open it in a recent Power BI Desktop. The PBIX contains the report and its embedded data model, so you only need this one file to explore the saved dashboard. For reproducible source files and the included CSV snapshot, [download the complete repository ZIP](https://github.com/KhalidSaadaldinYahia/supply-chain-control-tower/archive/refs/heads/main.zip), extract it, and open `project/SupplyChainControlTower.pbip` with its sibling `.Report`, `.SemanticModel`, and `data` folders intact. The PDF below is a static preview. A data refresh may require network access to the documented source snapshot.
 
 ## What the dashboard answers
 
