@@ -1,8 +1,11 @@
 # Supply Chain Control Tower
 
-## Open the interactive dashboard
+## Files
 
-**Recommended:** [download SupplyChainControlTower.pbix](SupplyChainControlTower.pbix) and open it in a recent Power BI Desktop. The PBIX contains the report and its embedded data model, so you only need this one file to explore the saved dashboard. For reproducible source files and the included CSV snapshot, [download the complete repository ZIP](https://github.com/KhalidSaadaldinYahia/supply-chain-control-tower/archive/refs/heads/main.zip), extract it, and open `project/SupplyChainControlTower.pbip` with its sibling `.Report`, `.SemanticModel`, and `data` folders intact. The PDF below is a static preview. A data refresh may require network access to the documented source snapshot.
+- [Open the Power BI dashboard](SupplyChainControlTower.pbix) in Power BI Desktop.
+- [Read the PDF analytical preview](Supply_Chain_Control_Tower_Dashboard.pdf). This PDF summarises independently checked figures; it is not yet a page-for-page export of the PBIX. A matching PDF export is pending verification in Power BI Desktop.
+
+The PBIX is the single-file dashboard. A data refresh may need network access to its saved source URLs.
 
 ## What the dashboard answers
 
@@ -46,7 +49,7 @@ Metric definitions, semantic-model architecture, engineering decisions, refresh 
 
 ## Technical architecture
 
-- Power BI Project (`.pbip`)
+- Power BI Desktop (`.pbix`)
 - PBIR enhanced report definitions
 - TMDL semantic model
 - Three fact tables: sales orders, purchase orders, and monthly inventory snapshots
@@ -54,7 +57,7 @@ Metric definitions, semantic-model architecture, engineering decisions, refresh 
 - Dedicated `_Measures` table with grouped business measures
 - Explicit Date dimension with auto date/time disabled
 - Separate KPI display measures and detail-level financial formatting
-- Public GitHub CSV source with local CSV snapshot included
+- Public GitHub CSV source pinned to a historical commit
 - Custom report theme and registered background images
 
 ## Data model
@@ -108,18 +111,3 @@ The report uses an executive command-center visual system with dedicated page co
 
 **Khalid SaadAldin Yahia**  
 Data Analyst · Power BI · Python · SQL · Excel
-
-## Open and inspect the report
-
-- [Preview the dashboard PDF](Supply_Chain_Control_Tower_Dashboard.pdf). A PDF is a static export; the `.pbip` project contains the interactive report.
-- [Browse the Power BI project](project/) or [download this repository as a ZIP](https://github.com/KhalidSaadaldinYahia/supply-chain-control-tower/archive/refs/heads/main.zip). Keep the `project` folder intact after extracting.
-- Open [`SupplyChainControlTower.pbip`](project/SupplyChainControlTower.pbip) from the extracted `project` folder in a recent Power BI Desktop. The `.pbip` file references its sibling `.Report` and `.SemanticModel` folders; it cannot open by itself after downloading only that file.
-- On refresh, choose **Anonymous** access if Power BI requests credentials for `raw.githubusercontent.com`. The project reads the included CSV snapshot from this repository at fixed commit `5798892caa8d`. For offline refresh, replace each table query's `Web.Contents(...)` CSV source with `File.Contents(...)` pointing to its included local `project/data` CSV.
-
-The CSV data snapshots are included under [`project/data`](project/data/). A `.pbix` was not generated because the PBIP source cannot be converted faithfully without opening and saving it in Power BI Desktop.
-
-### Reproducible data snapshot
-
-The semantic model reads CSV files from immutable commit `5798892caa8d48c0da542299c70b89686e4efe5a`. The same files are included in `project/data/` for inspection. Refreshing this project will not silently switch to a later `main` branch snapshot. To analyze newer data, update the CSV and source URL together and revalidate the measures and preview.
-
-The data are synthetic portfolio examples. The repository includes the complete prepared tables and model; it does not include the original generator. Reproduction of the exact synthetic records should use the committed CSV snapshot.
